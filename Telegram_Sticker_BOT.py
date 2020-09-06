@@ -24,7 +24,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(update, context):
-    # update.message.reply_sticker(open('8.jpg', 'rb'))
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="אהלן אני הבוט שלך שיהפוך כל תמונה לסטיקר מגניב! 🤖"
                                   "\nשלח/י תמונה ואחזיר לך סטיקר!"
@@ -41,7 +40,6 @@ def reply_sticker(update: telegram.update, context):
     f: telegram.File = p.get_file()
     f.download(custom_path=TEMP_PHOTO)
     text = m.caption
-    print(text)
     crop_image_circle(text)
     m.reply_sticker(open(TEMP_PHOTO + '.png', 'rb'))
     m.reply_text(random.choice(
