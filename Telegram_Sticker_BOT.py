@@ -1,3 +1,4 @@
+import os
 import random
 import sys
 import logging
@@ -45,6 +46,11 @@ def reply_sticker(update: telegram.update, context):
     m.reply_text(random.choice(
         ['בכיף! תשלח/י עוד  👩🏻‍🚀', 'לשירותך תמיד  💂‍♂️', '🤩   I LIKE IT   🤩', 'Cooooooool 🙀',
          'מה שצריך, אני כאן  👨🏼‍💻']))
+    try:
+        os.remove(TEMP_PHOTO)
+        os.remove(TEMP_PHOTO + ".png")
+    except Exception as e:
+        print(e)
 
 
 def crop_center(pil_img, crop_width, crop_height):
